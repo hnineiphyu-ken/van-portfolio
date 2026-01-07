@@ -49,7 +49,7 @@ function renderPagination(totalPages) {
   const prevBtn = document.createElement("button")
   prevBtn.type = "button"
   prevBtn.className = "page-btn prev"
-  prevBtn.textContent = "Prev"
+  prevBtn.textContent = "<"
   prevBtn.disabled = currentPage === 1
   prevBtn.setAttribute("aria-label", "Previous page")
   prevBtn.addEventListener("click", () => {
@@ -74,7 +74,7 @@ function renderPagination(totalPages) {
   const nextBtn = document.createElement("button")
   nextBtn.type = "button"
   nextBtn.className = "page-btn next"
-  nextBtn.textContent = "Next"
+  nextBtn.textContent = ">"
   nextBtn.disabled = currentPage === totalPages
   nextBtn.setAttribute("aria-label", "Next page")
   nextBtn.addEventListener("click", () => {
