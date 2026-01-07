@@ -334,6 +334,75 @@ nav ul li a:hover {
   cursor: default;
 }
 
+/* Content section (cards with icons) */
+.content {
+  padding: 40px 0;
+}
+
+.content h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.content-grid {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border: 1px #00000080 solid;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #fdf8f8;
+  margin: 20px 0px;
+}
+
+.content-grid.hidden {
+  display: none;
+}
+
+.content-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.content-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.content-icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.content-icon i {
+  font-size: 18px;
+}
+
+.content-body h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.content-body p {
+  font-size: 14px;
+  color: #666;
+  font-weight: 300;
+}
+
 /* Contact section */
 .contact {
   padding: 60px 0;
@@ -403,7 +472,8 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .portfolio-grid {
+  .portfolio-grid,
+  .content-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -417,7 +487,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .portfolio-grid {
+  .portfolio-grid,
+  .content-grid {
     grid-template-columns: 1fr;
   }
 

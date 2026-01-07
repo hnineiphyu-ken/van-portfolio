@@ -115,8 +115,77 @@ filterButtons.forEach((button) => {
   })
 })
 
-    // Initial render
-    renderPage()
+// Initial render
+renderPage()
+
+// Content section pagination functionality
+const contentPaginationContainer = document.getElementById("content-pagination")
+const contentItems = document.querySelectorAll(".content-grid")
+
+const contentItemsPerPage = 3
+let currentContentPage = 1
+
+function renderContentPagination(totalPages) {
+  contentPaginationContainer.innerHTML = ""
+
+  if (totalPages <= 1) return
+
+  const prevBtn = document.createElement("button")
+  prevBtn.type = "button"
+  prevBtn.className = "page-btn prev"
+  prevBtn.textContent = "<"
+  prevBtn.disabled = currentContentPage === 1
+  prevBtn.setAttribute("aria-label", "Previous page")
+  prevBtn.addEventListener("click", () => {
+    currentContentPage = Math.max(1, currentContentPage - 1)
+    renderContentPage()
+  })
+  contentPaginationContainer.appendChild(prevBtn)
+
+  for (let p = 1; p <= totalPages; p++) {
+    const btn = document.createElement("button")
+    btn.type = "button"
+    btn.className = "page-btn" + (p === currentContentPage ? " active" : "")
+    btn.textContent = String(p)
+    btn.setAttribute("aria-label", `Go to page ${p}`)
+    btn.addEventListener("click", () => {
+      currentContentPage = p
+      renderContentPage()
+    })
+    contentPaginationContainer.appendChild(btn)
+  }
+
+  const nextBtn = document.createElement("button")
+  nextBtn.type = "button"
+  nextBtn.className = "page-btn next"
+  nextBtn.textContent = ">"
+  nextBtn.disabled = currentContentPage === totalPages
+  nextBtn.setAttribute("aria-label", "Next page")
+  nextBtn.addEventListener("click", () => {
+    currentContentPage = Math.min(totalPages, currentContentPage + 1)
+    renderContentPage()
+  })
+  contentPaginationContainer.appendChild(nextBtn)
+}
+
+function renderContentPage() {
+  const totalPages = Math.max(1, Math.ceil(contentItems.length / contentItemsPerPage))
+  if (currentContentPage > totalPages) currentContentPage = totalPages
+
+  // Hide all content items first
+  contentItems.forEach((item) => item.classList.add("hidden"))
+
+  const startIndex = (currentContentPage - 1) * contentItemsPerPage
+  const visibleItems = Array.from(contentItems).slice(startIndex, startIndex + contentItemsPerPage)
+  visibleItems.forEach((item) => item.classList.remove("hidden"))
+
+  renderContentPagination(totalPages)
+}
+
+// Initial content render
+if (contentItems.length > 0) {
+  renderContentPage()
+}
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
