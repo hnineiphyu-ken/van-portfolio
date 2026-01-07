@@ -287,6 +287,53 @@ nav ul li a:hover {
   transform: scale(1.05);
 }
 
+.portfolio-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.portfolio-item:hover video {
+  transform: scale(1.05);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.page-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: #333;
+}
+
+.page-btn.active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 /* Contact section */
 .contact {
   padding: 60px 0;
