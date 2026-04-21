@@ -540,6 +540,40 @@ footer {
   font-weight: 300;
 }
 
+/* Go To Top button */
+.go-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background-color 0.25s ease;
+  z-index: 1200;
+}
+
+.go-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.go-to-top:hover {
+  background: #111;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .portfolio-grid,
@@ -592,5 +626,10 @@ footer {
   .cv-preview {
     min-height: 420px;
     height: 420px;
+  }
+
+  .go-to-top {
+    right: 16px;
+    bottom: 16px;
   }
 }

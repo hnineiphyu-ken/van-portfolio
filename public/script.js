@@ -203,3 +203,27 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   })
 })
+
+// Floating Go To Top button functionality
+const goToTopButton = document.getElementById("go-to-top")
+
+if (goToTopButton) {
+  const toggleGoToTopButton = () => {
+    if (window.scrollY > 300) {
+      goToTopButton.classList.add("show")
+    } else {
+      goToTopButton.classList.remove("show")
+    }
+  }
+
+  window.addEventListener("scroll", toggleGoToTopButton)
+
+  goToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  })
+
+  toggleGoToTopButton()
+}
