@@ -122,7 +122,7 @@ renderPage()
 const contentPaginationContainer = document.getElementById("content-pagination")
 const contentItems = document.querySelectorAll(".content-grid")
 
-const contentItemsPerPage = 3
+const contentItemsPerPage = 5
 let currentContentPage = 1
 
 function renderContentPagination(totalPages) {
